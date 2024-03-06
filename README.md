@@ -13,10 +13,12 @@ In the linked Invision page you will find the designs for two components. Comple
 * All content areas should be deemed as being populated from a CMS - so all copy lengths can vary!
 
 ## Technologies
-* Any CSS-preprocessors or frameworks.
-* ES5 or ES6+ acceptable.
-* Please include some reasoning for the decisions via comments or readme.
-* Build tools and task runners are encouraged (e.g. grunt/gulp/webpack).
+
+* Webpack boilerplate from <https://github.com/WeAreAthlon/frontend-webpack-boilerplate> this would make the template creation faster with the included functions and preset options
+* SASS: in order to have modular styling for the component
+* ES6: Vanilla ES6 would be sufficient for this project as it is simple and would be faster to make
+* glightbox: to make the modal responsive and has polished functionality
+* plop: to generate components faster by running `npm run generate` 
 
 ## Layout
 * The layout is expected to work in the latest Chrome/FireFox/Edge versions.
