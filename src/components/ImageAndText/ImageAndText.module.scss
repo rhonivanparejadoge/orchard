@@ -41,6 +41,14 @@
 
       .image-wrap {
         @include aspect-ratio(384, 600);
+        transition: all .4s ease-out;
+        transform: translateY(40px);
+        opacity: 0;
+
+        &.isVisible {
+          opacity: 1;
+          transform: translateY(0);
+        }
 
         @include desktop {
           margin-left: -3px;
@@ -55,15 +63,36 @@
       }
 
       .image-wrap {
+        transition: all .6s ease-out;
+        transform: translateY(40px);
+        opacity: 0;
         @include aspect-ratio(384, 290);
         @include desktop {
           margin-left: -3px;
+        }
+
+        &.isVisible {
+          opacity: 1;
+          transform: translateY(0);
         }
       }
     }
 
     &__image-2 {
       margin-bottom: 18px;
+      transition-delay: .2s !important;
+
+      @include tablet-until {
+        transition-delay: 0s !important;
+      }
+    }
+
+    &__image-3 {
+      transition-delay: .4s !important;
+
+      @include tablet-until {
+        transition-delay: 0s !important;
+      }
     }
   }
 
@@ -87,6 +116,14 @@
       border-bottom: 1px solid $white;
       padding-bottom: 17px;
       margin-bottom: 29px;
+      transform: translateY(40px);
+      opacity: 0;
+      transition: all .6s ease-out .6s;
+
+      &.isVisible {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     &__paragraphs {
@@ -94,6 +131,18 @@
       line-height: 30px;
       font-weight: 300;
       margin-bottom: 40px;
+      transform: translateY(40px);
+      opacity: 0;
+      transition: all .6s ease-out .8s;
+
+      @include tablet-until {
+        transition-delay: 0s !important;
+      }
+
+      &.isVisible {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
       @include desktop {
         padding-right: 26px;
@@ -110,6 +159,14 @@
 
     &__be-mindful {
       margin-bottom: 40px;
+      transition: all .6s ease-out 1s;
+      transform: translateY(40px);
+      opacity: 0;
+
+      &.isVisible {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
       @include desktop {
         margin-bottom: 0;

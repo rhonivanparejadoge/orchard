@@ -1,11 +1,20 @@
 .three-up-component {
   padding-bottom: 60px;
+  padding-top: 100px;
 
   &__header {
     grid-column: span 8;
     text-align: center;
     margin-top: 89px;
     letter-spacing: 1px;
+    transform: translateY(40px);
+    opacity: 0;
+    transition: all .6s ease-out;
+
+    &.isVisible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     @include tablet {
       grid-column: span 12;
@@ -32,6 +41,34 @@
     &__item {
       grid-column:  span 8;
       margin-bottom: 24px;
+      transform: translateY(40px);
+      opacity: 0;
+      transition: all .6s ease-out .2s;
+
+      @include tablet-until {
+        transition-delay: 0 !important;
+      }
+
+      &:nth-child(2) {
+        transition-delay: .4s !important;
+
+        @include tablet-until {
+          transition-delay: 0s !important;
+        }
+      }
+
+      &:nth-child(3) {
+        transition-delay: .6s !important;
+
+        @include tablet-until {
+          transition-delay: 0s !important;
+        }
+      }
+
+      &.isVisible {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
       @include tablet {
         grid-column:  span 6;
