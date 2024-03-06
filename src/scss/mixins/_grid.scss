@@ -1,0 +1,168 @@
+//----------------------------------------
+// Applies a grid container
+//----------------------------------------
+@mixin render-grid-setting($grid-setting) {
+  $columns: map-get($grid-setting, 'columns');
+  $space: map-get($grid-setting, 'space');
+
+  grid-template-columns: repeat(#{$columns}, 1fr);
+  column-gap: $space;
+}
+
+@mixin grid() {
+  display: grid;
+
+  @each $bp-name, $grid-setting in $grid-settings {
+    @if ($bp-name == 'mobile') {
+      @include render-grid-setting($grid-setting);
+    } @else if ($bp-name == 'tablet') {
+      @include tablet {
+        @include render-grid-setting($grid-setting);
+      }
+    } @else if ($bp-name == 'desktop') {
+      @include desktop {
+        @include render-grid-setting($grid-setting);
+      }
+    }
+  }
+}
+
+
+//----------------------------------------
+// Applies a grid overlay
+//----------------------------------------
+@mixin gridOverlay($config, $max-width) {
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 50%;
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translateX(-50%);
+    background-position: 0;
+    z-index: 9999999;
+    pointer-events: none;
+
+    @each $key, $value in $config {
+      $columns: map-get($value, 'columns');
+      $space: map-get($value, 'space');
+      $gutter: map-get($value, 'gutter');
+
+      $background-width: calc(100% + #{$space});
+
+      @if $key == 'mobile' {
+        width: calc(100% - (2 * #{$gutter}));
+        max-width: calc(#{$max-width} - (2 * #{$gutter}));
+        background-image: bg-guide($key);
+        background-size: $background-width 100%;
+      }
+
+      @if $key == 'tablet' {
+        @include tablet {
+          width: calc(100% - (2 * #{$gutter}));
+          max-width: calc(#{$max-width} - (2 * #{$gutter}));
+          background-image: bg-guide($key);
+          background-size: $background-width 100%;
+        }
+      }
+
+      @if $key == 'desktop' {
+        @include desktop {
+          width: calc(100% - (2 * #{$gutter}));
+          max-width: calc(#{$max-width} - (2 * #{$gutter}));
+          background-image: bg-guide($key);
+          background-size: $background-width 100%;
+        }
+      }
+    }
+  }
+}
+
+@function bg-guide($breakpoint) {
+  $bp: map-get($grid-settings, $breakpoint);
+  $grid-color: hsla(286, 51%, 44%, 0.25);
+  $column-width: calc((100% / #{map-get($bp, 'columns')}) - #{map-get($bp, space)});
+  $repeating-width: calc(100% / #{map-get($bp, 'columns')});
+  $background-width: calc(100% + #{map-get($bp, space)});
+
+  @return repeating-linear-gradient(
+    to right,
+    #{$grid-color},
+    #{$grid-color} #{$column-width},
+    transparent #{$column-width},
+    transparent #{$repeating-width}
+  );
+}
+
+.show-grid {
+  @include gridOverlay($grid-settings, $max-width);
+}
+
+
+//----------------------------------------
+// Applies grid-constraints
+//----------------------------------------
+@function grid-span(
+  $span-count,
+  $gutter-count,
+  $breakpoint,
+  $include-page-gutter: false,
+  $negative: false
+) {
+  $page-gutter-width: map-deep-get($grid-settings, $breakpoint, gutter) * 2;
+  $space-width: map-deep-get($grid-settings, $breakpoint, space) * 4;
+
+  @if $breakpoint == 'desktop' {
+    $space-width: map-deep-get($grid-settings, $breakpoint, space) * 11;
+  } @else if $breakpoint == 'tablet' {
+    $space-width: map-deep-get($grid-settings, $breakpoint, space) * 11;
+  }
+
+  $deduction: $page-gutter-width + $space-width;
+  $gutter: map-deep-get($grid-settings, $breakpoint, space) * $gutter-count;
+  $negative_multiplier: 1;
+  @if $negative {
+    $negative_multiplier: -1;
+  }
+  @if $include-page-gutter {
+    @if $breakpoint == 'desktop' {
+      @return calc(
+        (
+          (((#{$max-width} - #{$deduction}) / 12) * #{$span-count}) +
+          ((#{$max-width} - #{$max-container}) / 2) + #{$gutter}
+        ) * #{$negative_multiplier}
+      );
+    } @else if $breakpoint == "tablet" {
+      @return calc(
+        (
+          (((100vw - #{$deduction}) / 12) * #{$span-count}) + #{$gutter} + (100vw -
+          (100vw - #{map-deep-get($grid-settings, $breakpoint, gutter)}))
+        ) * #{$negative_multiplier}
+      );
+    } @else {
+      @return calc(
+        (
+          (((100vw - #{$deduction}) / 5) * #{$span-count}) + #{$gutter} + (100vw -
+          (100vw - #{map-deep-get($grid-settings, $breakpoint, gutter)}))
+        ) * #{$negative_multiplier}
+      );
+    }
+  } @else {
+    @if $breakpoint == 'desktop' {
+      @return calc(
+        ((((#{$max-width} - #{$deduction}) / 12) * #{$span-count}) + #{$gutter}) * #{$negative_multiplier}
+      );
+    } @else if $breakpoint == "tablet" {
+      @return calc(
+        ((((100vw - #{$deduction}) / 12) * #{$span-count}) + #{$gutter}) * #{$negative_multiplier}
+      );
+    } @else {
+      @return calc(
+        ((((100vw - #{$deduction}) / 5) * #{$span-count}) + #{$gutter}) * #{$negative_multiplier}
+      );
+    }
+  }
+  @return 0;
+}

@@ -1,0 +1,16 @@
+@import './mixins/layouts';
+@import './mixins/grid';
+@import './mixins/aspect-ratio';
+
+//-----------------------------------------------------------------------
+//  CLEARFIX
+//  Adds clearfix based on http://bourbon.io/docs/#clearfix
+//  usage: @include cleafix
+//-----------------------------------------------------------------------
+@mixin clearfix {
+  &::after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+}

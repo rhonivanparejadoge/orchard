@@ -1,0 +1,87 @@
+/////////////////////
+// General Functions
+
+/*------------------------------------------------------------------*\
+  REM Functions
+  Convert px to rem
+\*------------------------------------------------------------------*/
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+@function convert-to-rem($value, $base-value: $base-font-size) {
+  $value: strip-unit($value) / strip-unit($base-value) * 1rem;
+
+  @if $value == 0 {
+    $value: 0;
+  }
+
+  @return $value;
+}
+
+@function rem($values, $base-value: $base-font-size) {
+  $max: length($values);
+
+  @if $max == 1 {
+    @return convert-to-rem(nth($values, 1), $base-value);
+  }
+  $remValues: ();
+
+  @for $i from 1 through $max {
+    $remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
+  }
+
+  @return $remValues;
+}
+
+/*------------------------------------------------------------------*\
+  Z-INDEX
+  Get a z-index value from a layer name
+\*------------------------------------------------------------------*/
+@function z($layer) {
+  @if not map-has-key($z-indexes, $layer) {
+    @error 'There is no layer named `#{$layer}` in $z-indexes. '
+      + 'Layer should be one of #{map-keys($z-indexes)}.';
+  }
+
+  @return map-get($z-indexes, $layer);
+}
+
+/*------------------------------------------------------------------*\
+  COLOR
+  usage:
+    background-color: color(default); or
+    background-color: color(default, primary);
+\*------------------------------------------------------------------*/
+@function color($theme, $key: primary) {
+  @if map-has-key($themes, $theme) {
+    @return map-get(map-get($themes, $theme), $key);
+  } @else {
+    @warn "Unknown '#{$theme}' in $colors.";
+    @return null;
+  }
+}
+
+/*------------------------------------------------------------------*\
+/// Map deep get
+/// @author Hugo Giraudel
+/// @access public
+/// @param {Map} $map - Map
+/// @param {Arglist} $keys - Key chain
+/// @return {*} - Desired value
+\*------------------------------------------------------------------*/
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}
+
+
+//-----------------------------------------------------------------------
+//  Bakcground color opacity
+//  usage: background-opacity($color, $opacity)
+//-----------------------------------------------------------------------
+@function background-opacity($color, $opacity: 1) {
+  @return rgba($color, $opacity);
+}

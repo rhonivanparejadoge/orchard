@@ -1,7 +1,6 @@
 import '../scss/app.scss';
 
 /* Imports */
-import ImageAndTexts from "../components/ImageAndTexts/ImageAndTexts";
 
 // Add a map for each component class
 const classes = new Map(

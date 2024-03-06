@@ -1,0 +1,66 @@
+@use 'sass:math';
+
+//////////////////////////
+// General Variables
+//
+
+// Font Sizings
+$base-font-size: 16px;
+$base-line-height: 1.5;
+
+// Colors
+@import './colors';
+
+// Fonts
+@import './base/fonts';
+
+// Easing
+$easing: cubic-bezier(0.1, 0.1, 0.2, 1);
+$card-easing: cubic-bezier(0.25, 0, 0.75, 1);
+
+// Z-Indexes
+$z-indexes: (
+  'modal': 50,
+  'dropdown': 40,
+  'default': 1,
+  'below': -1,
+);
+
+// Map for font families
+// Change the fonts accordingly
+$open-sans: 'Open Sans';
+$open-sans-condensed: 'Open Sans Condensed';
+$open-sans-semi-condensed: 'Open Sans Semi Condensed';
+
+// Breakpoints
+$max-width: 1440px !default;
+$max-container: 1280px !default;
+
+$layout--bp_mobile: 320px;
+$layout--bp_tablet: 768px;
+$layout--bp_desktop: 1025px;
+$layout--bp_wide: 1440px;
+$layout--bp_large: 1920px;
+
+$gutter--bp_mobile: 40px;
+$gutter--bp_tablet: 80px;
+$gutter--bp_desktop: 160px;
+
+// Grid Settings
+$grid-settings: (
+  mobile: (
+    columns: 5,
+    space: 20px,
+    gutter: math.div($gutter--bp_mobile, 2)
+  ),
+  tablet: (
+    columns: 12,
+    space: 24px,
+    gutter: math.div($gutter--bp_tablet, 2)
+  ),
+  desktop: (
+    columns: 12,
+    space: 24px,
+    gutter: math.div($gutter--bp_desktop, 2)
+  ),
+);

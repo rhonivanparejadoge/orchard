@@ -1,0 +1,82 @@
+// Colors
+$transparent:       rgba(255, 255, 255, 0);
+$white:             #fff;
+$trueBlack:         #000;
+$grey:              #e5e5e5;
+$silver:            #88a1ab;
+$black:             #111212;
+$blue-1:            #00263d;
+$blue-2:            #004d96;
+$blue-3:            #008bcd;
+$blue-4:            #23428f;
+$blue-5:            #051150;
+$blue-6:            #002e56;
+$blue-7:            #597a9e;
+$blue-8:            #8fa6bf;
+$blue-9:            #363e4d;
+$red-1:             #d2232a;
+$red-2:             #bc212f;
+$red-3:             #800307;
+$orange-1:          #ff7800;
+$orange-2:          #f06419;
+$yellow-1:          #fc0;
+
+$themes: (
+  default: (
+    primary: transparent,
+    secondary: transparent,
+    tertiary: transparent,
+    white: $white,
+    gray: $grey,
+    accent-primary: transparent,
+    accent-secondary: transparent,
+    transparent: transparent,
+  ),
+  poweroffox: (
+    primary: $blue-1,
+    secondary: $blue-2,
+    tertiary: '',
+    white: $white,
+    gray: $grey,
+    accent-primary: $blue-3,
+    accent-secondary: $red-1,
+    transparent: $transparent,
+    trueBlack: $trueBlack
+  ),
+  foxnews: (
+    primary: $blue-4,
+    secondary: $red-2,
+    tertiary: '',
+    white: $white,
+    gray: $grey,
+    accent-primary: $red-3,
+    accent-secondary: $blue-5,
+  ),
+  foxsports: (
+    primary: $blue-6,
+    secondary: $blue-7,
+    tertiary: $blue-8,
+    white: $white,
+    gray: $grey,
+    accent-primary: $yellow-1,
+    accent-secondary: $orange-1,
+  ),
+  foxentertainment: (
+    primary: $blue-6,
+    secondary: $silver,
+    tertiary: $black,
+    white: $white,
+    gray: $grey,
+    accent-primary: $orange-2,
+    accent-secondary: ''
+  ),
+  foxnext: (
+    primary: $blue-9,
+    secondary: $blue-3,
+    tertiary: '',
+    white: $white,
+    gray: $grey,
+    accent-primary: $blue-1,
+    accent-secondary: ''
+  )
+);
