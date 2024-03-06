@@ -1,16 +1,15 @@
-export interface {{pascalCase name}}Props {
-  title?: string;
-}
+import { $ } from '../../js/helpers/selectors';
 
-let SELECTOR = '.selector';
+let SELECTOR = '.{{kebabCase name}}';
 
 class {{pascalCase name}} {
   constructor() {
     if (! $(SELECTOR)) {
       return false;
     }
-  }
 
+    //Your code below here
+  }
 }
 
-export default ComponentName;
+export default {{pascalCase name}};

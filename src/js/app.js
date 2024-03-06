@@ -1,6 +1,18 @@
 import '../scss/app.scss';
 
-/* Your JS Code goes here */
+/* Imports */
+import ImageAndTexts from "../components/ImageAndTexts/ImageAndTexts";
 
-/* Demo JS */
-import './demo.js';
+// Add a map for each component class
+const classes = new Map(
+  [
+  ]
+);
+
+// Initialize Components
+document.addEventListener(
+  'DOMContentLoaded', () => {
+    // All components
+    classes.forEach(Module => new Module());
+  }
+);
