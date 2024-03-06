@@ -22,6 +22,7 @@
 
     h2 {
       font-size: 32px;
+      margin-bottom: 40px;
       @include desktop {
         font-size: 41px;
         font-weight: 300;
@@ -46,7 +47,7 @@
       transition: all .6s ease-out .2s;
 
       @include tablet-until {
-        transition-delay: 0 !important;
+        transition-delay: 0s !important;
       }
 
       &:nth-child(2) {
