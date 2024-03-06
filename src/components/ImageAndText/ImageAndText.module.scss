@@ -6,7 +6,6 @@
   }
 
   .container {
-    @include grid();
     column-gap: 0 !important;
   }
 
@@ -95,7 +94,10 @@
       line-height: 30px;
       font-weight: 300;
       margin-bottom: 40px;
-      padding-right: 26px;
+
+      @include desktop {
+        padding-right: 26px;
+      }
     }
 
     h4 {

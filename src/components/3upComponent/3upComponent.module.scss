@@ -1,0 +1,82 @@
+.three-up-component {
+  padding-bottom: 60px;
+
+  &__header {
+    grid-column: span 8;
+    text-align: center;
+    margin-top: 89px;
+    letter-spacing: 1px;
+
+    @include tablet {
+      grid-column: span 12;
+    }
+
+    h2 {
+      font-size: 32px;
+      @include desktop {
+        font-size: 41px;
+        font-weight: 300;
+        margin-bottom: 76px;
+      }
+    }
+  }
+
+  &__articles {
+    @include grid();
+    grid-column: span 8;
+    
+    @include tablet {
+      grid-column: span 12;
+    }
+
+    &__item {
+      grid-column:  span 8;
+      margin-bottom: 24px;
+
+      @include tablet {
+        grid-column:  span 6;
+      }
+
+      @include desktop {
+        grid-column:  span 4;
+        margin-bottom: 0;
+      }
+
+      &__image-wrap {
+        @include aspect-ratio(384, 290);
+        margin-bottom: 28px;
+
+        &:after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          height: 4px;
+          background: $red;
+          pointer-events: none;
+        }
+      }
+
+      &__content {
+        h2 {
+          letter-spacing: 0.3px;
+          font-size: 18px;
+          margin-bottom: 9px;
+        }
+
+        p {
+          font-weight: 300;
+        }
+
+        .js-read-more {
+          margin-top: 24px;
+          display: inline-block;
+          text-transform: uppercase;
+          color: white;
+          border-bottom: 1px solid $red;
+          padding-bottom: 4px;
+        }
+      }
+    }
+  }
+}

@@ -10,4 +10,5 @@ body {
 .container {
   @extend %layout--container;
   margin: 0 auto;
+  @include grid();
 }
