@@ -1,23 +1,10 @@
 {
-  "author": "WeAreAthlon <hello@weareathlon.com> (https://www.weareathlon.com)",
+  "author": "Rhon Ivan lewis Pareja",
   "name": "Orchard",
   "version": "5.18.0",
-  "description": "Starter project template boilerplate based on Webpack with SASS/PostCSS and babel ES6/7 support.",
-  "homepage": "https://github.com/WeAreAthlon/frontend-webpack-boilerplate#readme",
   "browserslist": [
     "last 2 versions",
     "> 5%"
-  ],
-  "bugs": {
-    "url": "https://github.com/WeAreAthlon/frontend-webpack-boilerplate/issues",
-    "email": "plamen@athlonsofia.com"
-  },
-  "contributors": [
-    {
-      "name": "Plamen Nikolov",
-      "email": "me@pnikoloff.com",
-      "url": "https://pnikoloff.com"
-    }
   ],
   "devDependencies": {
     "@babel/core": "^7.17.9",
@@ -42,6 +29,7 @@
     "imagemin-optipng": "^8.0.0",
     "imagemin-svgo": "^10.0.1",
     "mini-css-extract-plugin": "^2.4.4",
+    "plop": "^4.0.1",
     "postcss": "^8.3.11",
     "postcss-loader": "^8.1.0",
     "sass": "^1.50.1",
@@ -79,6 +67,5 @@
     "lint:js": "eslint --ext .js src/js/",
     "stats": "webpack --config configuration/webpack.prod.config.js --mode=production --json > dist/stats.json && webpack-bundle-analyzer dist/stats.json"
   },
-  "target": "web",
-  "dependencies": {}
+  "target": "web"
 }
