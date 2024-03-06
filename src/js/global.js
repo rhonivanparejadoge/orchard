@@ -1,3 +1,5 @@
+import { $, $$ } from './helpers/selectors';
+
 const Global = () => {
   const isInViewport =  elem => {
     const distance = elem.getBoundingClientRect();
@@ -24,6 +26,14 @@ const Global = () => {
   scrollAnimationHandler();
 
   window.addEventListener('scroll', scrollAnimationHandler, false);
+
+  //Handle All anchor links
+  $$('a').forEach(link => {
+    link.addEventListener('click', e => {
+      console.log("Current Element: ", e.currentTarget)
+    })
+  })
+
 }
 
 export default Global;
