@@ -1,0 +1,123 @@
+.image-and-text {
+  padding-top: 60px;
+
+  @include desktop {
+    padding-top: 184px;
+  }
+
+  .container {
+    @include grid();
+    column-gap: 0 !important;
+  }
+
+  &__images {
+    grid-column: 1 / span 8;
+    margin-bottom: 24px;
+
+    @include tablet {
+      grid-column: 1 / span 12;
+    }
+
+    @include desktop {
+      grid-column: 1 / span 8;
+      margin-bottom: 0;
+    }
+
+    &__image-wrap {
+      @include desktop {
+        display: flex;
+        height: 100%;
+        flex-wrap: nowrap;
+      }
+    }
+
+    &__part1 {
+      margin-bottom: 18px;
+
+      @include desktop {
+        flex: 1 1 384px;
+        padding-right: 29px;
+        margin-bottom: 0
+      }
+
+      .image-wrap {
+        @include aspect-ratio(384, 600);
+
+        @include desktop {
+          margin-left: -3px;
+        }
+      }
+    }
+
+    &__part2 {
+      @include desktop {
+        flex: 1 1 384px;
+        padding-right: 28px;
+      }
+
+      .image-wrap {
+        @include aspect-ratio(384, 290);
+        @include desktop {
+          margin-left: -3px;
+        }
+      }
+    }
+
+    &__image-2 {
+      margin-bottom: 18px;
+    }
+  }
+
+  &__texts {
+    grid-column: 1 / span 8;
+    margin-left: -2px;
+
+    @include tablet {
+      grid-column: 1 / span 12;
+    }
+
+    @include desktop {
+      grid-column: 9 / span 4;
+    }
+
+    h1 {
+      font-weight: 300;
+      text-transform: uppercase;
+      font-size: 27px;
+      margin-top: 3px;
+      border-bottom: 1px solid $white;
+      padding-bottom: 17px;
+      margin-bottom: 29px;
+    }
+
+    &__paragraphs {
+      font-size: 18px;
+      line-height: 30px;
+      font-weight: 300;
+      margin-bottom: 40px;
+      padding-right: 26px;
+    }
+
+    h4 {
+      color: $red;
+      text-transform: uppercase;
+      font-size: 17px;
+      font-weight: 300;
+      margin-bottom: 12px;
+    }
+
+    &__be-mindful {
+      margin-bottom: 40px;
+
+      @include desktop {
+        margin-bottom: 0;
+      }
+
+      p {
+        font-size: 19px;
+        line-height: 29px;
+        font-weight: 400;
+      }
+    }
+  }
+}

@@ -1,3 +1,4 @@
+@use 'sass:math';
 //-----------------------------------------------------------------------
 //  ASPECT-RATIO
 //  usage: @include aspect-ratio($width, $height)
@@ -9,7 +10,7 @@
     display: block;
     content: "";
     width: 100%;
-    padding-top: ($height / $width) * 100%;
+    padding-top: calc($height / $width) * 100%;
   }
 
   > * {
@@ -20,5 +21,9 @@
     bottom: 0;
     margin: auto;
     overflow: hidden;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
   }
 }

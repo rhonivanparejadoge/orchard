@@ -1,0 +1,13 @@
+body {
+  font-size: 16px;
+  line-height: 28px;
+  background-color: $black;
+  color: $grey;
+  font-family: $open-sans;
+  font-weight: 400;
+}
+
+.container {
+  @extend %layout--container;
+  margin: 0 auto;
+}

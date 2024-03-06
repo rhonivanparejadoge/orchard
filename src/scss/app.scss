@@ -12,7 +12,11 @@
 /* Mixins, helpers and functions */
 @import './mixins';
 
+/* Globals */
+@import './global';
+
 /* Vendor */
 
 /* Components */
+@import '../components/ImageAndText/ImageAndText.module.scss';
 

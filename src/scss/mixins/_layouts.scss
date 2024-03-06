@@ -57,15 +57,11 @@
   max-width: $max-width;
 
   @include tablet {
-    width: calc(100% - #{$gutter--bp_tablet});
+    max-width: calc(100% - #{$gutter--bp_tablet});
   }
 
   @include desktop {
-    width: calc(100% - #{$gutter--bp_desktop});
-  }
-
-  @include wide {
-    width: calc(#{$max-width} - #{$gutter--bp_desktop});
+    max-width: 1230px;
   }
 }
 
