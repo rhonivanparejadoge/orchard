@@ -1,4 +1,5 @@
 import { $ } from '../../js/helpers/selectors';
+import GLightbox from 'glightbox';
 
 let SELECTOR = '.image-and-text';
 
@@ -9,7 +10,11 @@ class ImageAndText {
     }
 
     //Your code below here
-    console.log('test')
+    const lightbox = GLightbox({
+      touchNavigation: true,
+      loop: true,
+      autoplayVideos: true
+    });
   }
 }
 
